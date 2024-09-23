@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: 1BG
+    uniqueID: 1600833561
+    locked: 0
+  - name: 2BG
+    uniqueID: 1729622139
+    locked: 0
+  - name: 3TreeBG0
+    uniqueID: 2211983267
+    locked: 0
+  - name: 4TreeBG1
+    uniqueID: 3478798561
+    locked: 0
+  - name: 5Ray1
+    uniqueID: 3279393347
+    locked: 0
+  - name: 6TreeBG2
+    uniqueID: 1721895695
+    locked: 0
+  - name: 7TreeBG3
+    uniqueID: 735690675
+    locked: 0
+  - name: 8Ray2
+    uniqueID: 446701525
+    locked: 0
+  - name: 9TreeBG4
+    uniqueID: 787476241
+    locked: 0
+  - name: 10TreeLine
+    uniqueID: 1512489185
+    locked: 0
+  - name: 11Grass
+    uniqueID: 2265974717
+    locked: 0
+  - name: 12DarkGrass
+    uniqueID: 3661779925
+    locked: 0
+  - name: Archer
+    uniqueID: 1970205007
+    locked: 0
+  - name: EvWiz
+    uniqueID: 550971373
+    locked: 0
