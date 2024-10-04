@@ -1,69 +1,95 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ArcherController : MonoBehaviour
 {
-    public float playerMovementSpeed = 5f;
-    public float jumpForce = 5f;
+    public float playermovementSpeed = 5f;
+    public float jumpPower = 5f;
+    public LayerMask layerM;
+    public Transform gCheckTrans;
 
-    SpriteRenderer spriteRd;
-    Animator animatorController;
+    public GameObject ArrowBody;
+    public Transform arrowPoint;
+    public float firepower = 5f;
+
+
+    Animator animatorContoller;
+    public ParticleSystem particleEffect;
 
     Rigidbody2D rbbody;
-
-    bool isGrounded;
-    bool isJumping;
-
     void Start()
     {
         rbbody = GetComponent<Rigidbody2D>();
-        spriteRd = GetComponent<SpriteRenderer>();
-        animatorController = GetComponent<Animator>();
+        animatorContoller = GetComponent<Animator>();
     }
 
+    // Update is called once per frame
     void Update()
     {
         float movementX = Input.GetAxis("Horizontal");
 
-        rbbody.velocity = new Vector2(movementX * playerMovementSpeed, rbbody.velocity.y);
+        rbbody.velocity = new Vector2(movementX * playermovementSpeed, rbbody.velocity.y);
 
-        if (Math.Abs(rbbody.velocity.x) > 1f)
+
+        //jump
+
+        if (Input.GetButton("Jump") && groundcheck())
         {
-            animatorController.SetInteger("switchAni", 1);
+            //rbbody.AddForce(Vector2.up * jumpPower);
+            rbbody.velocity = new Vector2(rbbody.velocity.x, jumpPower);
+        }
+
+        if (groundcheck())
+        {
+            if (Math.Abs(rbbody.velocity.x) > 0)
+            {
+                animatorContoller.SetInteger("switchAni", 1);
+            }
+            else
+            {
+                animatorContoller.SetInteger("switchAni", 0);
+            }
+
         }
         else
         {
-            animatorController.SetInteger("switchAni", 0);
+            animatorContoller.SetInteger("switchAni", 2);
         }
+
+
 
         if (rbbody.velocity.x < 0)
         {
-            spriteRd.flipX = true;
+
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (rbbody.velocity.x > 0)
+        if (rbbody.velocity.x > 0)
         {
-            spriteRd.flipX = false;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+
         }
 
-        // Check for ground collision
-        if (Physics2D.Raycast(transform.position, Vector2.down, 0.5f))
-        {
-            isGrounded = true;
-            isJumping = false; // Reset jumping flag
-        }
-        else
-        {
-            isGrounded = false;
-        }
 
-        // Handle jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping)
+        if (Input.GetButtonDown("Fire1"))
         {
-            rbbody.velocity = new Vector2(rbbody.velocity.x, jumpForce);
-            animatorController.SetTrigger("Jump");
-            isJumping = true; // Set jumping flag
+            Shoot();
         }
+    }
+
+    bool groundcheck()
+    {
+        return Physics2D.OverlapCapsule(new Vector2(gCheckTrans.position.x, gCheckTrans.position.y), new Vector2(0.2f, 0.2f), CapsuleDirection2D.Vertical, 0, layerM);
+    }
+
+    void Shoot()
+    {
+        GameObject arrowSp = Instantiate(ArrowBody, arrowPoint.position, Quaternion.identity);
+        Rigidbody2D arrowrb = arrowSp.GetComponent<Rigidbody2D>();
+        arrowrb.velocity = transform.right * firepower;
+        particleEffect.Play();
     }
 }
