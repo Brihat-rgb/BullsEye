@@ -4,38 +4,56 @@ using UnityEngine;
 
 public class WizardController : MonoBehaviour
 {
-    public Transform playerTarget;
-    [SerializeField] private float speed = 2;
+    Transform playerTarget;
+    [SerializeField] private float speed = 3;
     SpriteRenderer spriteRenderer;
     Animator animatorController; // Add reference to Animator
 
     [SerializeField] private float chaseDistance = 3f;
-    [SerializeField] private float attackDistance = 4.5f;
+    [SerializeField] private float attackDistance = 50f;
+    float timer = 0;
+    public gameManager gameM;
+    public float damage = 5f;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animatorController = GetComponent<Animator>(); 
+        animatorController = GetComponent<Animator>();
+        playerTarget = GameObject.Find("Archer").transform;
+        gameM = FindAnyObjectByType<gameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, playerTarget.position) <= attackDistance)
-        {
-            attackState();
-        }
-        else if (Vector2.Distance(transform.position, playerTarget.position) <= chaseDistance)
+        if (Vector2.Distance(transform.position, playerTarget.position) <= chaseDistance)
         {
             chaseState();
         }
-        else {
+        else if (Vector2.Distance(transform.position, playerTarget.position) <= attackDistance) {
+            attackState();
+        }
+        else
+        {
             idleState();
         }
     }
 
     //StateMachine
-    void idleState() 
+
+    void attackState() {
+        timer += Time.deltaTime;
+        Debug.Log("Timer : " + timer);
+
+        if ((int)timer == 2)
+        {
+            gameM.PlayerHit(damage);
+            Debug.Log("Hit");
+            timer = 0;
+
+        }
+    }
+    void idleState()
     {
         animatorController.SetInteger("enemyAni", 0);
     }
@@ -45,7 +63,7 @@ public class WizardController : MonoBehaviour
 
         // Check distance and set animation based on chase distance threshold
         float distanceToPlayer = Vector2.Distance(transform.position, playerTarget.position);
-        animatorController.SetInteger("enemyAni", 1); 
+        animatorController.SetInteger("enemyAni", 1);
 
         if (playerTarget.position.x < transform.position.x)
         {
@@ -55,9 +73,6 @@ public class WizardController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-    }
-    void attackState() {
-        //animatorController.SetInteger("enemyAni", 3); 
     }
 
     private void OnDrawGizmos()

@@ -6,6 +6,12 @@ public class enemyHealthSystem : MonoBehaviour
 {
     public int numofArwTokill = 4;
     int numofArwTaken = 1;
+    gameManager gameGM;
+
+    private void Start()
+    {
+        gameGM = FindAnyObjectByType<gameManager>();
+    }
 
     public void arrowHit()
     {
@@ -17,6 +23,7 @@ public class enemyHealthSystem : MonoBehaviour
         }
         else
         {
+            gameGM.AddKills();
             Destroy(gameObject);
         }
     }

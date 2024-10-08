@@ -16,6 +16,11 @@ public class arrowBheav : MonoBehaviour
             collision.GetComponent<enemyHealthSystem>().arrowHit();
             DestoryGameObj();
         }
+        //else if (collision.gameObject.tag == "Main Enemy")
+        //{
+        //    collision.GetComponent<knightHealthSystem>().arrowHit();
+        //    DestoryGameObj();
+        //}
     }
 
     void DestoryGameObj()

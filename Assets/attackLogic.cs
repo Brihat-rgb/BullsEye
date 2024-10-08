@@ -6,18 +6,23 @@ public class attackLogic : MonoBehaviour
 {
     float timer = 0;
     public gameManager gameM;
+    public float damage = 5f;
 
-
+    private void Start()
+    {
+        gameM = FindAnyObjectByType<gameManager>();
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision.gameObject.tag == "Player")
         {
+
             timer += Time.deltaTime;
             Debug.Log("Timer : " + timer);
 
-            if (collision.gameObject.tag == "Player" && (int) timer == 3)
+            if ((int)timer == 2)
             {
-                gameM.PlayerHit();
+                gameM.PlayerHit(damage);
                 Debug.Log("Hit");
                 timer = 0;
 
