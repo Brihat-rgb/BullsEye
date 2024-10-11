@@ -20,7 +20,7 @@ public class WizardController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animatorController = GetComponent<Animator>();
         playerTarget = GameObject.Find("Archer").transform;
-        gameM = FindAnyObjectByType<gameManager>();
+        gameM = GameObject.FindWithTag("GameManager").GetComponent<gameManager>();
     }
 
     // Update is called once per frame
