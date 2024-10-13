@@ -47,6 +47,7 @@ public class WizardController : MonoBehaviour
 
         if ((int)timer == 2)
         {
+            animatorController.SetInteger("enemyAni", 2);
             gameM.PlayerHit(damage);
             Debug.Log("Hit");
             timer = 0;

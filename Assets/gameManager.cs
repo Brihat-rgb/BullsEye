@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
-    [SerializeField] private float playerHealth = 10f;
+    [SerializeField] private float playerHealth = 50f;
     float damageTaken = 0;
     public healthUIsystem UIsystem;
     //Score
@@ -46,4 +46,8 @@ public class gameManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
