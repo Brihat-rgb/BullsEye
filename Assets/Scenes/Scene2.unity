@@ -13742,7 +13742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fc0a76e54646846bab6f02945d555c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 10
+  playerHealth: 50
   UIsystem: {fileID: 1256319121}
   scoreText: {fileID: 1546612346}
   panel: {fileID: 2113560779}

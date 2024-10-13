@@ -279,8 +279,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482933814}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1818870596}
+        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -486,8 +486,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482933814}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1818870596}
+        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -548,7 +548,6 @@ GameObject:
   - component: {fileID: 1482933812}
   - component: {fileID: 1482933811}
   - component: {fileID: 1482933815}
-  - component: {fileID: 1482933814}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -630,18 +629,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1482933814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482933810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29f76e1733f0000438fd3f048a24f08f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1482933815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,6 +753,7 @@ GameObject:
   - component: {fileID: 1818870594}
   - component: {fileID: 1818870593}
   - component: {fileID: 1818870592}
+  - component: {fileID: 1818870596}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -859,6 +847,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1818870596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818870591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8fc0a76e54646846bab6f02945d555c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 50
+  UIsystem: {fileID: 0}
+  scoreText: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

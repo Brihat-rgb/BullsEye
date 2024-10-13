@@ -40,6 +40,12 @@ public class gameManager : MonoBehaviour
         scoreText.text = "Kills : " + kills;
     }
 
+    public void PlayGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
+    }
+
     public void RestartGame()
     {
         Time.timeScale = 1f;

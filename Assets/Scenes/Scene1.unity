@@ -3239,7 +3239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fc0a76e54646846bab6f02945d555c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 10
+  playerHealth: 50
   UIsystem: {fileID: 1386542895}
   scoreText: {fileID: 622742182}
   panel: {fileID: 1069802395}
@@ -13260,7 +13260,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 558685262}
         m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
